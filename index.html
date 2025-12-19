@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMR extractor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">CMR extractor</p>
+      <h1>Delivery notes, extracted in minutes.</h1>
+      <p class="subhead">Upload PDF scans, process pages with AI, and export a clean table.</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card upload-card" id="upload-card">
+      <div class="upload-header">
+        <div>
+          <h2>Upload PDF scans</h2>
+          <p>Drag & drop your files or pick them. We render pages for AI extraction.</p>
+        </div>
+        <div class="badge">PDF only</div>
+      </div>
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="file-input" accept="application/pdf" multiple>
+        <div class="dropzone-content">
+          <div class="icon-circle">📄</div>
+          <p><strong>Drop PDFs here</strong> or click to browse</p>
+          <small>We queue up to two pages at a time for faster results.</small>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="extract-btn" class="primary" disabled>Extract data</button>
+        <button id="export-csv-btn" class="ghost">Export CSV</button>
+        <button id="copy-tsv-btn" class="ghost">Copy (TSV)</button>
+        <button id="clear-btn" class="danger">Clear all</button>
+      </div>
+      <div class="file-list" id="file-list">No files selected yet.</div>
+      <div class="progress-row">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text" id="progress-text">Idle — no files yet</div>
+      </div>
+    </section>
+
+    <section class="card table-card">
+      <div class="table-actions">
+        <div>
+          <h2>Results</h2>
+          <p>One row per delivery note. Click a row to view details.</p>
+        </div>
+        <input id="search-input" type="search" placeholder="Search rows...">
+      </div>
+      <div class="table-wrapper">
+        <table id="results-table">
+          <thead>
+            <tr>
+              <th data-key="datum">datum</th>
+              <th data-key="aantal">aantal</th>
+              <th data-key="unit">unit</th>
+              <th data-key="hoogte_enkel">hoogte_enkel</th>
+              <th data-key="hoogte_stack">hoogte_stack</th>
+              <th data-key="aantal2">aantal2</th>
+              <th data-key="pallet">pallet</th>
+              <th data-key="issues">issues</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+          </tbody>
+        </table>
+      </div>
+      <div class="issues-panel" id="issues-panel"></div>
+    </section>
+  </main>
+
+  <div class="modal" id="details-modal">
+    <div class="modal-content">
+      <button class="close-btn" id="close-modal">×</button>
+      <h3>Delivery note details</h3>
+      <div class="details-grid" id="details-grid"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

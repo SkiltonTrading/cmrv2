@@ -1,0 +1,14 @@
+{
+  "name": "cmr-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "openai": "^4.68.2"
+  }
+}
